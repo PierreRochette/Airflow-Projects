@@ -1,0 +1,6 @@
+.env
+*venv
+pgadmin
+logs
+config
+*__pycache__
