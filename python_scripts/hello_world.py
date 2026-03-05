@@ -1,3 +1,3 @@
-def main(): 
+def hello_world(): 
     print("Hello World ! ")
     return 0

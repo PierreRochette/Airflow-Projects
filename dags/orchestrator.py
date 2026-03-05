@@ -5,7 +5,7 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
 sys.path.append("/opt/airflow/python_scripts")
-from hello_world import main 
+from hello_world import hello_world
 
 
 
@@ -25,5 +25,5 @@ dag = DAG(
 with dag: 
     task1 = PythonOperator(
         task_id='test_task', 
-        python_callable=main
+        python_callable=hello_world
     )
