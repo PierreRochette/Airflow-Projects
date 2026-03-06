@@ -46,7 +46,9 @@ try:
         percent_change_90d DOUBLE PRECISION, 
         market_cap DOUBLE PRECISION, 
         market_cap_dominance DOUBLE PRECISION, 
-        fully_diluted_market_cap DOUBLE PRECISION          
+        fully_diluted_market_cap DOUBLE PRECISION
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
     )
     """
     
