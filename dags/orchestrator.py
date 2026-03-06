@@ -5,25 +5,23 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
 sys.path.append("/opt/airflow/python_scripts")
-from hello_world import hello_world
 
-
+from insert_coinmarketcap_raw_data import insert_to_table_raw_coinmarketcap_api_data
 
 default_args = {
-    'description':"A DAG to orchestrate data", 
-    'start_date':datetime(2026, 2, 26), 
-    'catchup':False 
+    'description': "A DAG to orchestrate data", 
+    'start_date': datetime(2026, 3, 6), 
+    'catchup': False 
 }
     
-
 dag = DAG(
-    dag_id='test-orechestrator', 
+    dag_id='dags-orchestrator', 
     default_args=default_args, 
-    schedule=timedelta(minutes=5)
+    schedule=timedelta(minutes=60)
 )
 
 with dag: 
     task1 = PythonOperator(
         task_id='test_task', 
-        python_callable=hello_world
+        python_callable=insert_to_table_raw_coinmarketcap_api_data
     )
