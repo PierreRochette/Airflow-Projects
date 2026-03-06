@@ -21,7 +21,7 @@ parameters = {
 session = Session()
 session.headers.update(headers)
 
-def main():
+def fetch_data():
     
     try: 
         response = session.get(url, params=parameters)

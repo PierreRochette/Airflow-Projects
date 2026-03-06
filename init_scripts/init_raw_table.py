@@ -8,7 +8,7 @@ try:
     
     conn = psycopg2.connect(
         host=os.getenv("APP_POSTGRES_HOST"),
-        database=os.getenv("APP_POSTGRES_DB"), 
+        database=os.getenv("APP_POSTGRES_DB_COINMARKETCAP"), 
         user=os.getenv("APP_POSTGRES_USER"), 
         password=os.getenv("APP_POSTGRES_PASSWORD"),
         port=os.getenv("APP_POSTGRES_PORT")
@@ -20,7 +20,7 @@ try:
     cur = conn.cursor()
     
     create_table_query = """
-    CREATE TABLE IF NOT EXISTS raw_api_data (
+    CREATE TABLE IF NOT EXISTS raw_coinmarketcap_api_data (
         id SERIAL PRIMARY KEY, 
         coinmarketcap_id INTEGER, 
         name TEXT,
@@ -28,25 +28,25 @@ try:
         is_active BOOLEAN, 
         infinite_supply BOOLEAN, 
         is_fiat BOOLEAN, 
-        circulating_supply NUMERIC(20,8),
-        total_supply NUMERIC(20,8), 
-        max_supply NUMERIC(20,8), 
+        circulating_supply DOUBLE PRECISION,
+        total_supply DOUBLE PRECISION, 
+        max_supply DOUBLE PRECISION, 
         cmc_rank INTEGER, 
-        quote_symbol VARCHAR(10), 
-        price NUMERIC(20,8),
-        volume_24h NUMERIC(20,8),
-        volume_change_24h NUMERIC(20,8), 
-        cex_volume_24h NUMERIC(20,8), 
-        dex_volume_24h NUMERIC(20,8), 
-        percent_change_1h NUMERIC(20,8), 
-        percent_change_24h NUMERIC(20,8), 
-        percent_change_7d NUMERIC(20,8), 
-        percent_change_30d NUMERIC(20,8), 
-        percent_change_60d NUMERIC(20,8), 
-        percent_change_90d NUMERIC(20,8), 
-        market_cap NUMERIC(20,8), 
-        marker_cap_dominance NUMERIC(20,8), 
-        fully_diluted_market_cap NUMERIC(20,8)          
+        price_symbol VARCHAR(10), 
+        price DOUBLE PRECISION,
+        volume_24h DOUBLE PRECISION,
+        volume_change_24h DOUBLE PRECISION, 
+        cex_volume_24h DOUBLE PRECISION, 
+        dex_volume_24h DOUBLE PRECISION, 
+        percent_change_1h DOUBLE PRECISION, 
+        percent_change_24h DOUBLE PRECISION, 
+        percent_change_7d DOUBLE PRECISION, 
+        percent_change_30d DOUBLE PRECISION, 
+        percent_change_60d DOUBLE PRECISION, 
+        percent_change_90d DOUBLE PRECISION, 
+        market_cap DOUBLE PRECISION, 
+        market_cap_dominance DOUBLE PRECISION, 
+        fully_diluted_market_cap DOUBLE PRECISION          
     )
     """
     
