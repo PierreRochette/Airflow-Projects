@@ -17,7 +17,7 @@ default_args = {
 dag = DAG(
     dag_id='dags-orchestrator', 
     default_args=default_args, 
-    schedule=timedelta(minutes=60)
+    schedule=timedelta(minutes=10)
 )
 
 with dag: 
