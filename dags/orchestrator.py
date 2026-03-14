@@ -1,7 +1,7 @@
 import sys 
 
 from airflow import DAG
-from  airflow.providers.standard.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
 sys.path.append("/opt/airflow/python_scripts")
